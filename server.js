@@ -22,9 +22,10 @@ io.sockets.on('connection',socket => {
     console.log('disconnected', connections.length)
   })
   //send message
-  socket.on('send message',data => {
-    console.log(data)
-    io.sockets.emit('new message', {msg : data})
+  socket.on('send message', data => {
+    console.log(data.message)
+    console.log(data.person)
+    io.sockets.emit('new message', {msg : data.message, people: data.person})
   })
   //New User
   socket.on('new user', (data,callback)=> {

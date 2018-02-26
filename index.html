@@ -68,11 +68,16 @@
         var userName = $('#userName')
         messageform.submit(e => {
           e.preventDefault()
-          socket.emit('send message', message.val())
+          data = {
+            message: message.val(),
+            person: userName.val()
+          }
+          socket.emit('send message', data)
           message.val('')
         })
         socket.on('new message', data => {
-          chat.append('<div class="well">' + data.msg + '</div>')
+          console.log(data)
+          chat.append('<div class="well">' + data.msg.person + " " + data.msg.message + '</div>')
         })
         userForm.submit(e => {
           e.preventDefault()
@@ -83,7 +88,7 @@
               messageArea.show()
             }
           })
-          userName.val('')
+          // userName.val('')
         })
         socket.on('get users', data => {
           console.log('data',data[0])
