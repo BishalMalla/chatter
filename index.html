@@ -76,8 +76,9 @@
           message.val('')
         })
         socket.on('new message', data => {
-          console.log(data)
-          chat.append('<div class="well">' + data.msg.person + " " + data.msg.message + '</div>')
+          console.log(data.msg)
+          console.log(data.people)
+          chat.append('<div class="well">' + data.people + " " + data.msg + '</div>')
         })
         userForm.submit(e => {
           e.preventDefault()
