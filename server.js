@@ -6,7 +6,7 @@ const io = require('socket.io').listen(server)
 let users = []
 let connections = []
 
-server.listen(process.env.port || 3000)
+server.listen(process.env.PORT || 3000)
 console.log('server running')
 app.get('/',(req,res)=>{
   res.sendFile(__dirname + '/index.html')
